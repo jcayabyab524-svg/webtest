@@ -24,7 +24,10 @@
           <img src="ecologo.png" alt="Eco Reserves Logo" width="150px">
         </a>
       </div>
-      <nav>
+
+      <button class="menu-toggle" id="menuToggle">☰</button>
+
+      <nav id="navMenu">
         <ul>
           <li><a href="#About">About</a></li>
           <li><a href="#">Our Program</a></li>
@@ -106,28 +109,14 @@
       </div>
     </section>
 
-    <section class="content">
-      <div class="grid">
-        <div class="card">
-          <h3>Sustainable Commerce</h3>
-          <p>We connect businesses with environmental initiatives that protect ecosystems while creating value.</p>
-        </div>
-        <div class="card">
-          <h3>Community Impact</h3>
-          <p>Every program supports local communities and long-term ecological preservation.</p>
-        </div>
-        <div class="card">
-          <h3>Transparent Growth</h3>
-          <p>Clear reporting and measurable outcomes ensure trust and accountability.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <script>
     const openBtn = document.getElementById("openModal");
     const modal = document.getElementById("signupModal");
     const closeBtn = document.querySelector(".close");
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
 
     openBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -144,6 +133,8 @@
       }
     });
 
+    menuToggle.onclick = () => navMenu.classList.toggle("active");
+
     document.getElementById("signupForm").addEventListener("submit", async e => {
       e.preventDefault();
 
@@ -157,6 +148,7 @@
       const data = await res.json();
       alert(data.message);
     });
+
 
   </script>
 

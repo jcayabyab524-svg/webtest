@@ -43,7 +43,8 @@ header {
 }
 
 .logo {
-  height: 36px;       /* adjust size */
+  height: 36px;
+  /* adjust size */
   width: auto;
   display: block;
 }
@@ -55,7 +56,7 @@ header {
 nav ul {
   display: flex;
   list-style: none;
-  gap: 28px;
+  gap: 1.2rem;
   align-items: center;
 }
 
@@ -67,13 +68,19 @@ nav a {
 }
 
 .btn {
-  padding: 8px 18px;
-  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 100px;
   background: var(--green);
   color: white;
   font-weight: 600;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-  
+
+}
+
+.btn.full {
+  width: 100%;
+  border: none;
+  cursor: pointer;
 }
 
 .modal {
@@ -100,7 +107,7 @@ nav a {
   border-radius: 16px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   animation: modalPop 0.3s ease;
 }
 
@@ -155,7 +162,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Firefox */
 input[type="number"] {
-  appearance: textfield; 
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
@@ -164,29 +171,26 @@ input[type="number"] {
 .hero {
   height: 100vh;
   background:
-    linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
-    url("city view.jpg")
-    center / cover no-repeat;
+    linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
+    url("city view.jpg") center / cover no-repeat;
 
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   white-space: nowrap;
-  padding-bottom: 700px;
-  padding-right: 250px;
+  padding-bottom: 17rem;
+  place-items: center;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  max-width: 800px;
-  line-height: 1.2;
+  font-size: 2rem;
   opacity: 0;
   transform: translateY(20px);
   animation: heroTitle 1s ease-out forwards;
   animation-delay: 0.4s;
-  
+
 }
 
 @keyframes heroTitle {
@@ -213,7 +217,7 @@ input[type="number"] {
   background: white;
   padding: 32px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 .card h3 {
@@ -226,25 +230,37 @@ input[type="number"] {
   line-height: 1.6;
 }
 
-.pageone{
-    width: 1024px;
-    margin: 0 auto;
-    padding: 0 32px;
-    margin-bottom: 10px;
-    min-width: 1024px;
+.pageone {
+  background: url("slash-bg.png");
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: auto;
+  padding: 1.25rem;
+  border-top: 0.0625rem solid #d7d5d5;
+  border-bottom: 0.0625rem solid #d7d5d5;
+  margin-top: 6.25rem;
 }
 
-.content{
-    background: url("slash-bg.png");
-    background-repeat: repeat;
-    background-position: center top;
-    background-size: auto;
-    padding: 20px 0;
-    border-top: 1px solid #d7d5d5;
-    border-bottom: 1px solid #d7d5d5;
-    margin-top: 100px;
-    min-width: 1024px;
-    min-height: 135px;
+/* .content {
+  background: url("slash-bg.png");
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: auto ;
+  padding: 1.25rem;
+  border-top: 0.0625rem solid #d7d5d5;
+  border-bottom: 0.0625rem solid #d7d5d5;
+  margin-top: 6.25rem;
+  min-width: 64rem;
+  min-height: 8.4375rem;
+} */
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
 }
 
 /* FOOTER */
@@ -258,7 +274,30 @@ footer {
 
 /* MOBILE */
 @media (max-width: 768px) {
-  nav ul li:not(:last-child) {
+  nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #fff;
+    width: 100%;
     display: none;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+
+  .hero h1 {
+    font-size: 1.6rem;
   }
 }
