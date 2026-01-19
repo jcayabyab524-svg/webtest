@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eco Reserves</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <a href="#ecoreserves" class="ecologo">
+          <img src="ecologo.png" alt="Eco Reserves Logo" width="150px">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#About">About</a></li>
+          <li><a href="#">Our Program</a></li>
+          <li><a href="#">Our Goal</a></li>
+          <li><a href="#">Stories</a></li>
+          <li><a class="btn" href="#" id="openModal">Join</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="modal" id="signupModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      <h2>Register</h2>
+      <br>
+      <form id="signupForm" enctype="multipart/form-data">
+        <input type="text" name="full_name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="number" name="contact" placeholder="Contact" required>
+        <input type="text" name="referral" placeholder="Refferal" required>
+        <input type="number" name="amount" placeholder="Amount" required>
+        <input type="text" name="program" placeholder="Program" required>
+
+        <label class="file-label">
+          Upload Profile Image *
+          <input type="file" name="import_image" id="profileImage" accept="image/*" required>
+        </label>
+
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="ecoreserves">
+      <h1>Commerce That Cares, From Profit to Purpose</h1>
+    </section>
+
+    <section class="content" id="About">
+      <div class="pageone">
+        <h2>ECO RESERVES</h2>
+        <br>
+        <P>Eco Reserves is more than just an ecommerce company. It is a movement. Our tagline, “Commerce That Cares,
+          From Profit to Purpose,” captures the heart of what we do. We believe that business should not only be about
+          making money, but also about creating blessings that can be shared with everyone. Every peso invested, every
+          transaction made, becomes part of a bigger story of growth and giving.</P>
+        <br>
+        <p>At its core, Eco Reserves operates like any successful ecommerce platform: we sell, we trade, and we generate
+          profit. But unlike traditional businesses, our model is built on inclusivity. We welcome capital generation
+          through people, ordinary Filipinos who want to be part of something bigger. By pooling resources, we create a
+          sustainable system where profits are not just for the few, but for the many.</p>
+        <br>
+        <p>The beauty of Eco Reserves lies in its cycle. Commerce fuels profit, profit fuels purpose, and purpose fuels
+          charity. Imagine buying or investing in products, knowing that a portion of what you spend will directly
+          support communities in need. It’s ecommerce with a conscience, where every sale is a step toward uplifting
+          lives.</p>
+        <br>
+        <p>Our charity focus is simple yet powerful blessings shared become blessings multiplied. Eco Reserves channels
+          a significant part of its earnings into programs that help families, students, and communities. Whether it’s
+          funding scholarships, supporting local feeding programs, or providing livelihood opportunities, we make sure
+          that the success of the business translates into real impact.</p>
+        <br>
+        <p>For investors and partners, Eco Reserves is not just about returns. It’s about legacy. By joining us, you’re
+          not only growing your capital, you’re also planting seeds of hope. Every peso you put in becomes part of a
+          collective effort to make this a force for good. This is business reimagined: profit that doesn’t stop at the
+          bank, but flows into the lives of those who need it most.</p>
+        <br>
+        <p>For customers, shopping with Eco Reserves means shopping with heart. Every checkout is a chance to give back.
+          Every product purchased carries with it a story of compassion. It’s a way of turning everyday commerce into
+          everyday kindness. We make it easy for people to visualize your simple act of buying becomes someone else’s
+          blessing.</p>
+        <br>
+        <p>Eco Reserves is proof that commerce can care, and profit can have purpose. We are building a community where
+          success is shared, and charity is not an afterthought but the very foundation of our business. Together, we
+          transform ecommerce into a channel of blessings because when we grow, we give. And when we give, we all rise.
+        </p>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="grid">
+        <div class="card">
+          <h3>Sustainable Commerce</h3>
+          <p>We connect businesses with environmental initiatives that protect ecosystems while creating value.</p>
+        </div>
+        <div class="card">
+          <h3>Community Impact</h3>
+          <p>Every program supports local communities and long-term ecological preservation.</p>
+        </div>
+        <div class="card">
+          <h3>Transparent Growth</h3>
+          <p>Clear reporting and measurable outcomes ensure trust and accountability.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const openBtn = document.getElementById("openModal");
+    const modal = document.getElementById("signupModal");
+    const closeBtn = document.querySelector(".close");
+
+    openBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+
+    document.getElementById("signupForm").addEventListener("submit", async e => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+
+      const res = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+      alert(data.message);
+    });
+
+  </script>
+
+  <footer>
+    © 2026 Eco Reserves. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
